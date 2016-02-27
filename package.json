@@ -14,12 +14,13 @@
   "author": "Szymczakk",
   "license": "MIT",
   "dependencies": {
+    "azure": "^0.10.6",
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
     "mongoose": "^4.4.5"
   },
   "repository": {
-  "type": "git",
-  "url": "git://github.com/szymczakk/national-lottery-api.git" 
+    "type": "git",
+    "url": "git://github.com/szymczakk/national-lottery-api.git"
   }
 }
