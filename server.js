@@ -1,6 +1,6 @@
 //setup
 var azure = require('azure');
-var port = process.env.PORT | 3000;
+var port = process.env.PORT | 1337;
 var mongoDbuser = "";
 var mongoDbpass = "";
 azure.RoleEnvironment.getConfigurationSettings(function(error, settings) {
