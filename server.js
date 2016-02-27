@@ -1,7 +1,10 @@
 var port = process.env.PORT | 3000;
+var mongoDbuser = "APIuser";
+var mongoDbpass = "loteriaparagonowa";
+var mongoDbAccess = "mongodb://"+mongoDbuser+":"+mongoDbpass+"@ds064188.mlab.com:64188/loteriaparagonowaapi"
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/loteria');
+mongoose.connect(mongoDbAccess);
 var lottery = require('./lotteryModel');
 var express = require('express');
 var app = express();
