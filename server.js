@@ -1,8 +1,16 @@
+//setup
+var azure = require('azure');
 var port = process.env.PORT | 3000;
-var mongoDbuser = "APIuser";
-var mongoDbpass = "loteriaparagonowa";
-var mongoDbAccess = "mongodb://"+mongoDbuser+":"+mongoDbpass+"@ds064188.mlab.com:64188/loteriaparagonowaapi"
+var mongoDbuser = "";
+var mongoDbpass = "";
+azure.RoleEnvironment.getConfigurationSettings(function(error, settings) {
+  if (!error) {
+      mongoDbpass = settings['dbpass'];
+      mongoDbuser = settings['dbuser'];
+  }
+});
 
+var mongoDbAccess = "mongodb://"+mongoDbuser+":"+mongoDbpass+"@ds064188.mlab.com:64188/loteriaparagonowaapi"
 var mongoose = require('mongoose');
 mongoose.connect(mongoDbAccess);
 var lottery = require('./lotteryModel');
