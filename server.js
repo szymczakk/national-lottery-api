@@ -15,6 +15,10 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 var lotteryController = require('./lotteryController');
 
+app.get('/', function(req,res){
+   res.send("It works"); 
+});
+
 app.get('/lottery/:nr', lotteryController.findByNr);
 app.get('/lottery', lotteryController.find);
 app.post('/lottery', lotteryController.add);
