@@ -1,6 +1,5 @@
 //setup
 var azure = require('azure');
-console.log("azure: ", azure);
 var port = process.env.PORT | 1337;
 console.log("PORT: ",port);
 var mongoDbuser = "";
