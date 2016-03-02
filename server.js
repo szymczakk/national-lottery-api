@@ -5,14 +5,25 @@ var port = process.env.PORT | 1337;
 console.log("PORT: ",port);
 var mongoDbuser = "";
 var mongoDbpass = "";
-azure.RoleEnvironment.getConfigurationSettings(function(error, settings) {
-  if (!error) {
-      mongoDbpass = settings['dbpass'];
-      mongoDbuser = settings['dbuser'];
-      console.log("mongoDbpass ", mongoDbpass);
-      console.log("mongoDbuser ", mongoDbuser);
-  }
+azure.RoleEnvironment.isAvailable(function(error, available){
+    if (available) {
+        azure.RoleEnvironment.getConfigurationSettings(function(error, settings) {
+            if (!error) {
+                mongoDbpass = settings['dbpass'];
+                mongoDbuser = settings['dbuser'];
+                console.log("Node version: ", settings["WEBSITE_NODE_DEFAULT_VERSION"]);
+                console.log("mongoDbpass ", mongoDbpass);
+                console.log("mongoDbuser ", mongoDbuser);
+            }else{
+                console.error(error);
+            }
+        });
+    }
+    else{
+        console.error(error);
+    }
 });
+
 
 var mongoDbAccess = "mongodb://"+mongoDbuser+":"+mongoDbpass+"@ds064188.mlab.com:64188/loteriaparagonowaapi"
 console.log("mongoDbAccess ", mongoDbAccess);
