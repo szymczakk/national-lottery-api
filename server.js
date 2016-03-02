@@ -1,5 +1,6 @@
 //setup
 var azure = require('azure');
+console.log("azure: ", azure);
 var port = process.env.PORT | 1337;
 console.log("PORT: ",port);
 var mongoDbuser = "";
@@ -18,7 +19,6 @@ console.log("mongoDbAccess ", mongoDbAccess);
 var mongoose = require('mongoose');
 //mongoose.connect(mongoDbAccess);
 var lottery = require('./lotteryModel');
-console.log("lottery: ", lottery);
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
@@ -27,7 +27,6 @@ app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 var lotteryController = require('./lotteryController');
-console.log("lotteryController: ", lotteryController);
 
 app.get('/', function(req,res){
    res.send("It works"); 
