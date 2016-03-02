@@ -1,13 +1,11 @@
 //setup
-var port = process.env['PORT'] | 1337;
+var port = process.env['PORT'] || 1337;
 console.log("PORT: ",port);
 
-console.log("process.env: ",process.env);
 var mongoDbuser = process.env['dbuser'];
 var mongoDbpass = process.env['dbpass'];
 
 var mongoDbAccess = "mongodb://"+mongoDbuser+":"+mongoDbpass+"@ds064188.mlab.com:64188/loteriaparagonowaapi"
-console.log("mongoDbAccess ", mongoDbAccess);
 var mongoose = require('mongoose');
 mongoose.connect(mongoDbAccess);
 var lottery = require('./lotteryModel');
@@ -34,4 +32,4 @@ console.log("Listen start at: " + port);
 
 process.on('uncaughtException', function (err) {
   console.log(err);
-})
+});
