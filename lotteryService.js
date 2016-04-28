@@ -19,21 +19,23 @@ exports.find = function(err, func){
 };
 
 exports.add = function(err, func,lotteryModel){
-    if(!lotteryModel){
-      err("lotteryModel is null!");  
-    };
-    if(!lotteryModel.nip || !lotteryModel.nrkasy){
-        err("lotterModel error");
-    }
-    if(lotteryModel.nip.length != 10){
-      err("not enough number in nip field");
-    }
-  var l = new lottery({
+  if(!lotteryModel){
+    err("lotteryModel is null!");  
+  }
+  if(!lotteryModel.nip || !lotteryModel.nrkasy){
+      err("lotterModel error");
+  }
+    
+  if(!isNipValid(lotteryModel.nip)){
+    err("nip field validation error");
+  }
+    
+  var lotteryPOCO = new lottery({
     nrkasy: lotteryModel.nrkasy,
     nip: lotteryModel.nip
   });
 
-  l.save(function(err1){
+  lotteryPOCO.save(function(err1){
     if(err1){
       err(err1);
     }else{
@@ -41,3 +43,10 @@ exports.add = function(err, func,lotteryModel){
     }
   });
 };
+
+function isNipValid(nip){
+  if(nip.length!=10){
+    return false;
+  }
+  return true;
+}
