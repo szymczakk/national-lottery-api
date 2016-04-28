@@ -25,6 +25,9 @@ exports.add = function(err, func,lotteryModel){
     if(!lotteryModel.nip || !lotteryModel.nrkasy){
         err("lotterModel error");
     }
+    if(lotteryModel.nip.length != 10){
+      err("not enough number in nip field");
+    }
   var l = new lottery({
     nrkasy: lotteryModel.nrkasy,
     nip: lotteryModel.nip
