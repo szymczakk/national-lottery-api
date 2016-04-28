@@ -1,6 +1,7 @@
 var lottery = require('./lotteryModel');
 
 exports.findByNr = function(err, func, nr){
+  nr = parseNrKasy(nr);
   lottery.find({nrkasy:nr}, function(err, lot){
     if(err){
       err(err);
@@ -29,7 +30,9 @@ exports.add = function(err, func,lotteryModel){
   if(!isNipValid(lotteryModel.nip)){
     err("nip field validation error");
   }
-    
+  
+  lotteryModel.nrkasy = parseNrKasy(lotteryModel.nrkasy);
+  
   var lotteryPOCO = new lottery({
     nrkasy: lotteryModel.nrkasy,
     nip: lotteryModel.nip
@@ -45,8 +48,9 @@ exports.add = function(err, func,lotteryModel){
 };
 
 function isNipValid(nip){
-  if(nip.length!=10){
-    return false;
-  }
-  return true;
+  return /^\d{10}$/.test(nip);
+}
+
+function parseNrKasy(nrKasy){
+  return nrKasy.toLowerCase().trim().replace(/\s/g, '');
 }
