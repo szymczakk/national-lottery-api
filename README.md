@@ -6,7 +6,7 @@ It's simple helper API for https://loteriaparagonowa.gov.pl/ that will fasten up
 or other place that you want (should work with ff on [Greasemonkey](https://addons.mozilla.org/pl/firefox/addon/greasemonkey/))
 2. Install [this](https://github.com/szymczakk/national-lottery-api/blob/master/tampermonkeyScript.js) script to it.
 3. Get on [loteria paragonowa](https://loteriaparagonowa.gov.pl/) and enjoy. (after typing `numer kasy` that already exists in database
-script will automaticly fill `nip` for you. Trust me. It speed up whole process!)
+script will automaticly fill `nip` for you. On the other hand, if it not, it will send `numer kasy` and `nip` after you type them for **future**. Trust me. It speed up whole process!)
 
 #Simple api description
 Right now, api works on monogdb database, in simple way.
